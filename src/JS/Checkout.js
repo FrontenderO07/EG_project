@@ -15,6 +15,9 @@ const Product = ({
     decrementHandler,
     incrementHandler,
 }) => {
+    const totalPrice = total.toFixed(2)
+    const enebled = total === 0
+    const disabled = availableCount === orderedQuantity
     return (
         <tr>
             <td>{id}</td>
@@ -22,16 +25,18 @@ const Product = ({
             <td>{availableCount}</td>
             <td>${price}</td>
             <td>{orderedQuantity}</td>
-            <td>${total}</td>
+            <td>${totalPrice}</td>
             <td>
                 <button
                     className={styles.actionButton}
+                    disabled={disabled}
                     onClick={() => incrementHandler(id, price)}
                 >
                     +
                 </button>
                 <button
                     className={styles.actionButton}
+                    disabled={enebled}
                     onClick={() => decrementHandler(id, price)}
                 >
                     -
